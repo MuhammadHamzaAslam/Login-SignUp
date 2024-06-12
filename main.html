@@ -10,7 +10,7 @@
     <script>
         // Check if user is logged in
         if (localStorage.getItem('tr') !== 'true') {
-            // If not logged in, redirect to login page
+            localStorage.removeItem('tr')
             window.location.href = 'index.html';
         }
     </script>
