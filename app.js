@@ -1,66 +1,84 @@
-let div = document.getElementById("main");
+// const signUpButton = document.getElementById('signUp');
+// const signInButton = document.getElementById('signIn');
+// const container = document.getElementById('container');
 
-function showSignUp() {
-    div.innerHTML = `
-        <img src="img/instagram.webp" style="height: 120px;width: 200px;" alt="">
-        <input type="text" placeholder="Enter UserName" id="name" class="inputField">
-        <br>
-        <input type="email" placeholder="Email address" id="mail" class="inputField">
-        <br>
-        <input type="password" placeholder="Enter Password" id="pass" class="inputField">
-        <br>
-        <button id="in" class="dash">Sign In</button>
-        <button id="correct" class="dash">Sign up</button>
-    `;
+// signUpButton.addEventListener('click', () => {
+// 	container.classList.add("right-panel-active");
+// });
+
+// signInButton.addEventListener('click', () => {
+// 	container.classList.remove("right-panel-active");
+// });
+
+
+// let signUpBtn = document.querySelector('.btn')
+
+// signUpBtn.addEventListener('click',()=>{
+//     let createName = document.getElementById('createName').value
+//     let createEmail = document.getElementById('createEmail').value
+//     let createPass = document.getElementById('createPass').value
     
-    document.getElementById("in").addEventListener("click", showSignIn);
-    document.getElementById("correct").addEventListener('click', () => {
-        let UserName = document.getElementById('name').value;
-        let UserEmail = document.getElementById('mail').value;
-        let UserPass = document.getElementById('pass').value;
-       
-        document.getElementById('name').value = "";
-        document.getElementById('mail').value = "";
-        document.getElementById('pass').value = "";
-        
-        localStorage.setItem('name', UserName);
-        localStorage.setItem('mail', UserEmail);
-        localStorage.setItem('pass', UserPass);
-        console.log("UserName: " + UserName);
-        console.log("UserEmail: " + UserEmail);
-        console.log("UserPass: " + UserPass);
-    });
-}
+//     localStorage.setItem('mail',createEmail)
+//     localStorage.setItem('name',createName)
+//     localStorage.setItem('pass',createPass)
+//     localStorage.setItem('tr',true)
+//     window.location.href = 'index.html'
+// })
 
-function showSignIn() {
-    div.innerHTML = `
-        <img src="img/instagram.webp" style="height: 120px;width: 200px;" alt="">
-        <input type="email" placeholder="Email address" id="mail" class="inputField">
-        <br>
-        <input type="password" placeholder="Enter Password" id="pass" class="inputField">
-        <br>
-        <button id="dash" class="dash">Sign In</button>
-        <button id="up" class="dash">Sign up</button>
-    `;
-    
-    document.getElementById("up").addEventListener("click", showSignUp);
-    document.getElementById("dash").addEventListener("click", site);
-}
+// let loginBtn = document.querySelector('.loginBtn')
+// loginBtn.addEventListener('click',()=>{
+//     let mail = document.getElementById('email').value
+//     let pass = document.getElementById('pass').value
+//     if (mail == localStorage.getItem('mail') && pass == localStorage.getItem('pass')){
+//         window.location.href = 'main.html'
+//         alert('You Logged')
+//     }
+//     else{
+//         alert('No Logged')
+//     }
+// })
 
-function site() {
-    let loginMail = document.getElementById("mail").value;
-    let loginPass = document.getElementById("pass").value;
-    let flag = false;
-    if (localStorage.getItem('mail') === loginMail && localStorage.getItem('pass') === loginPass) {
-        console.log('You successfully logged in');
-        flag = true;
+
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+    container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+    container.classList.remove("right-panel-active");
+});
+
+let signUpBtn = document.querySelector('.btn');
+
+signUpBtn.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent form from submitting
+    let createName = document.getElementById('createName').value;
+    let createEmail = document.getElementById('createEmail').value;
+    let createPass = document.getElementById('createPass').value;
+
+    localStorage.setItem('mail', createEmail);
+    localStorage.setItem('name', createName);
+    localStorage.setItem('pass', createPass);
+    // Setting logged-in status to true after sign up
+    localStorage.setItem('tr', 'true');
+    window.location.href = 'index.html';
+});
+
+let loginBtn = document.querySelector('.loginBtn');
+loginBtn.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent form from submitting
+    let mail = document.getElementById('email').value;
+    let pass = document.getElementById('pass').value;
+    if (mail === localStorage.getItem('mail') && pass === localStorage.getItem('pass')) {
+        localStorage.setItem('tr', 'true'); // Set login status to true
+        window.location.href = 'main.html';
     } else {
-        alert("not logged");
-        flag = false;
+        alert('No Logged');
     }
-    if (flag) {
-        window.location.href = 'dashBoard.html';
-    }
-}
+});
 
-document.getElementById("up").addEventListener("click", showSignUp);
+
+
