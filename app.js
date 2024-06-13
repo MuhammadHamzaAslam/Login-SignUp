@@ -21,13 +21,32 @@ signUpBtn.addEventListener('click', (event) => {
     let createEmail = document.getElementById('createEmail').value;
     let createPass = document.getElementById('createPass').value;
 
-    localStorage.setItem('mail', createEmail);
-    localStorage.setItem('name', createName);
-    localStorage.setItem('pass', createPass);
-    localStorage.setItem('tr', 'true');
-    window.location.href = 'index.html';
+    if (createName !== '' && createEmail !== '' && createPass !== '') {
+        Swal.fire({
+            title: "Good job!",
+            text: "You SignUp Our Page",
+            icon: "success"
+        }).then(() => {
+            
+            localStorage.setItem('mail', createEmail);
+            localStorage.setItem('name', createName);
+            localStorage.setItem('pass', createPass);
+            localStorage.setItem('tr', 'true');
+            
+            
+            window.location.href = 'index.html';
+        });
+    } else {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "SomeThing is Missing",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
+    }
 
-    let span = document.getElementById('span').innerText = createName
+    
+    let span = document.getElementById('span').innerText = createName;
 });
 
 let loginBtn = document.querySelector('.loginBtn');
