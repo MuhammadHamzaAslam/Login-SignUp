@@ -4,18 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
+    
+    
+    <section>
+        <div>
+            <h1>Welcome <span id="span"></span></h1>
+        </div>
+        <div>
+            <ul>
+                <li><h1>My Projects</h1></li>
+                <li><button id="btn_2" class="raise">LogOut</button></li>
+            </ul>
+        </div>
+
+    </section>
+    
+   
     <script>
-        // Check if user is logged in
         if (localStorage.getItem('tr') !== 'true') {
             localStorage.removeItem('tr')
-            window.location.href = 'index.html';
+            window.location.href = 'index.html'
         }
+        else {
+            document.getElementById('span').innerText = localStorage.getItem('name');
+        }
+        let btn_2 = document.getElementById('btn_2');
+        btn_2.addEventListener('click', () => {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You want to logout",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, logout it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Logged Out!",
+                        text: "Your account has been logged out.",
+                        icon: "success"
+                    }).then(() => {
+                        localStorage.removeItem('tr');
+                        window.location.href = 'index.html';
+                    });
+                }
+            });
+        });
     </script>
-    <h1>Welcome to the Main Page</h1>
-    <p>This is the main content area.</p>
-    <!-- Add any other content and scripts needed for your main page here -->
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="app.js"></script>
 </body>
 </html>

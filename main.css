@@ -1,0 +1,25 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+body{
+    background-color: black;
+}
+*{
+    color: white;
+}
+ul{
+    display: flex;
+    list-style-type: none;
+    justify-content: space-between;
+}
+#btn_2{
+    margin-left: 20px;
+    width: 100px;
+    height: 40px;
+}
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
