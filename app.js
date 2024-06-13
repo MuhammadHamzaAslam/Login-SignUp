@@ -16,7 +16,7 @@ signInButton.addEventListener('click', () => {
 let signUpBtn = document.querySelector('.btn');
 
 signUpBtn.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent form from submitting
+    event.preventDefault(); 
     let createName = document.getElementById('createName').value;
     let createEmail = document.getElementById('createEmail').value;
     let createPass = document.getElementById('createPass').value;
@@ -24,7 +24,6 @@ signUpBtn.addEventListener('click', (event) => {
     localStorage.setItem('mail', createEmail);
     localStorage.setItem('name', createName);
     localStorage.setItem('pass', createPass);
-    // Setting logged-in status to true after sign up
     localStorage.setItem('tr', 'true');
     window.location.href = 'index.html';
 
@@ -33,7 +32,7 @@ signUpBtn.addEventListener('click', (event) => {
 
 let loginBtn = document.querySelector('.loginBtn');
 loginBtn.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent form from submitting
+    event.preventDefault(); 
     let mail = document.getElementById('email').value;
     let pass = document.getElementById('pass').value;
     if (mail === localStorage.getItem('mail') && pass === localStorage.getItem('pass')) {
